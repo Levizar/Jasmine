@@ -1,14 +1,9 @@
-let CreationTableauLangages =  () => {
+let CreationTableauLangages =  () => ["Html", "CSS", "Java", "PHP"]
 
-}
+let CreationTableauNombres =  () => [...Array(6).keys()]
 
-let CreationTableauNombres =  () => {
-
-}
-
-let RemplacementElement =  (langages) => {
-
-}
+// let RemplacementElement =  (langages) => langages.map((lg,i) => i === 2 ? "Javascript" : lg)
+let RemplacementElement =  (langages) => langages.splice(2, 1, 'Javascript')
 
 let AjoutElementLangages =  (langages) => {
 

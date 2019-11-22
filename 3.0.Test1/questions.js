@@ -3,64 +3,46 @@
  * Trouvez la façon de faire la plus optimal.
  * Il peut y avoir plusieur façon de faire.
  */
-let tailleString = (texte) => {
+const tailleString = (texte) => {
     return texte.length;
 }
-let remplaceECar = (texte) => {
-    let a = texte.indexOf("e")
-    let text =  texte.substr(" ", a) + " " +texte.substr(a + 1 , texte.length);
+const remplaceECar = (texte) => {
+    const a = texte.indexOf("e")
+    const text =  texte.substr(" ", a) + " " +texte.substr(a + 1 , texte.length);
     return text;
 }
-let concatString = (texte1, texte2) => {
+const concatString = (texte1, texte2) => texte1 + texte2
 
-}
-let afficherCar5 =  (texte) => {
+const afficherCar5 =  (texte) =>  texte[4]
 
-}
-let afficher9Car =  (texte) => {
+const afficher9Car =  (texte) => texte.substring(0, 9)
 
-}
-let majusculeString =  (texte) => {
+const majusculeString =  (texte) => texte.toUpperCase()
 
-}
-let minusculeString =  (texte) => {
+const minusculeString =  (texte) => texte.toLowerCase()
 
-}
-let SupprEspaceString =  (texte) => {
+const SupprEspaceString =  (texte) => texte.trim()
 
-}
-let IsString =  (texte) => {
+const IsString =  (texte) => typeof(texte) == "string" ? true : false
 
-}
+const AfficherExtensionString =  (texte) => texte.match(/[^.]*$/)[0]
 
-let AfficherExtensionString =  (texte) => {
+const NombreEspaceString =  (texte) => texte.match(/\s/g).length
 
-}
-let NombreEspaceString =  (texte) => {
+const InverseString =  (texte) => texte.split("").reverse().join("");
 
-}
-let InverseString =  (texte) => {
-
-}
 
 /**
  * Exercices sur les nombres et les caluls mathématiques
  */
-let calculPuissance =  (x, y) => {
+const calculPuissance =  (x, y) => Math.pow(x,y)
 
-}
-let valeurAbsolue =  (nombre) => {
+const valeurAbsolue =  (nombre) => Math.abs(nombre) 
 
-}
-let valeurAbsolueArray =  (array) => {
+const valeurAbsolueArray =  (array) => array.map(nbr => Math.abs(nbr))
 
-}
-let sufaceCercle =  (rayon) => {
+const sufaceCercle =  (r) => Math.round(Math.PI*(r**2))
 
-}
-let hypothenuse =  (ab, ac) => {
+const hypothenuse =  (ab, ac) => Math.hypot(ab, ac)
 
-}
-let calculIMC =  (poids, taille) => {
-
-}
+const calculIMC =  (poids, taille) => +(poids / taille**2).toFixed(2)
