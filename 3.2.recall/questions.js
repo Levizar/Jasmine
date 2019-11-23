@@ -1,18 +1,10 @@
-let selectElementsStartingWithA = (array) => {
-    return 'Write your method here';
-}
+let selectElementsStartingWithA = (array) => array.filter(el => el[0] === "a")
 
-let selectElementsStartingWithVowel = (array) => {
-    return 'Write your method here';
-}
+let selectElementsStartingWithVowel = (array) => array.filter(el => /[aeiou]/i.test(el[0]))
 
-let removeNullElements = (array) => {
-    return 'Write your method here';
-}
+let removeNullElements = (array) => array.filter( el => el != null)
 
-let removeNullAndFalseElements = (array) => {
-    return 'Write your method here';
-}
+let removeNullAndFalseElements = (array) => array.filter( el => (el !== null && el !== false)) // Attention: égalité stricte pour éviter de filtrer le nombre 0
 
 let reverseWordsInArray = (array) => {
     return 'Write your method here';
