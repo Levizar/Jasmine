@@ -11,7 +11,7 @@ let reverseWordsInArray = (array) => array.map(word => word.split("").reverse().
 // La 1ere solution est suffisante pour avoir toutes les possibilités mais elles ne sont pas triées
 // let everyPossiblePair = (array) => array.map((elm,i,arr) => arr.filter(el => el !== elm))
 // D'abord un tri sur l'array pour l'ordre alphabétique puis inversion pour tout mettre dans le bon ordre
-let everyPossiblePair = (array) => array.sort().map((elm,i,arr) => arr.filter(el => el !== elm)).reverse()
+let everyPossiblePair = (array) => array.sort().map((elm, i, arr) => arr.filter(el => el !== elm)).reverse()
 
 // Splice:
 // p1: index p2: nombre d'élément à retirer p3: élément à insérer à leur place
@@ -27,49 +27,43 @@ let addElementToBeginning = (array, element) => (array.unshift(element), array) 
 //     return array
 // }
 
-let sortByLastLetter = (array) => array.sort( (a,b) => a.charCodeAt(a.length -1) - b.charCodeAt(b.length -1))
+let sortByLastLetter = (array) => array.sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1))
 
-let getFirstHalf = (string) => string.substring(0,3)
+let getFirstHalf = (string) => string.substring(0, 3)
 
 let makeNegative = (number) => -Math.abs(number)
 
 let numberOfPalindromes = (array) => array.filter(word => word === word.split('').reverse().join('')).length
+// let numberOfPalindromes = (array) => array.filter(word => word === [...word].reverse().join('')).length // Fonctionne aussi
 
-let shortestWord = (array) => [...array.sort((a,b) => a.length - b.length)][0]
+let shortestWord = (array) => [...array.sort((a, b) => a.length - b.length)][0]
 
-let longestWord = (array) => [...array.sort((a,b) => b.length - a.length)][0]
+let longestWord = (array) => [...array.sort((a, b) => b.length - a.length)][0]
 
-let sumNumbers = (array) => {
-    return 'Write your method here';
-}
+let sumNumbers = (array) => array.reduce((a, b) => a + b)
 
-let repeatElements = (array) => {
-    return 'Write your method here';
-}
+let repeatElements = (array) => [...array, ...array]
 
-let stringToNumber = (string) => {
-    return 'Write your method here';
-}
+let stringToNumber = (string) => Number(string)
 
-let calculateAverage = (array) => {
-    return 'Write your method here';
-}
+let calculateAverage = (array) => ([array.reduce((a, b) => a + b)][0] / array.length)
 
-let getElementsUntilGreaterThanFive = (array) => {
-    return 'Write your method here';
-}
+// Map sur l'array, ne renvoit que null ou l'arr.splice au bon moment
+// Filter sur le résultat pour éliminer tous les résultats sauf l'arr.splice
+// Selectionne l'array résultat avec [...Array][0]
+let getElementsUntilGreaterThanFive = (array) => [...array.map((elm, i, arr) => elm > 5 ? arr.splice(0, i) : null).filter(el => el !== null)][0]
 
-let convertArrayToObject = (array) => {
-    return 'Write your method here';
-}
+// Map pour groupper les éléments par [key, value] et laisser null entre les 2
+// Filter pour éliminer les null
+// Object.fromEntries sur le résultat
+let convertArrayToObject = (array) => Object.fromEntries(array.map((el, i, arr) => (i % 2 == 1) ? [arr[i - 1], arr[i]] : null).filter(el => el !== null));
 
-let getAllLetters = (array) => {
-    return 'Write your method here';
-}
+// Join les mots, les sépares en lettre, trie les lettres, crée un set pour rendre les valeurs uniques, déverse le set dans une array
+let getAllLetters = (array) => [...new Set(array.join('').split('').sort())]
 
-let swapKeysAndValues = (object) => {
-    return 'Write your method here';
-}
+// Refactor avec Entries: plus court moins gourmand
+// let swapKeysAndValues = (object) => Object.fromEntries(Object.keys(object).map((oldKey,i) => [ [...Object.values(object)][i], oldKey]))
+let swapKeysAndValues = (object) => Object.fromEntries(Object.entries(object).map(([key, value]) => [value, key] ))
 
 let sumKeysAndValues = (object) => {
     return 'Write your method here';
