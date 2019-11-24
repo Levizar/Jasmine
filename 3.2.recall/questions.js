@@ -63,27 +63,17 @@ let getAllLetters = (array) => [...new Set(array.join('').split('').sort())]
 
 // Refactor avec Entries: plus court moins gourmand
 // let swapKeysAndValues = (object) => Object.fromEntries(Object.keys(object).map((oldKey,i) => [ [...Object.values(object)][i], oldKey]))
-let swapKeysAndValues = (object) => Object.fromEntries(Object.entries(object).map(([key, value]) => [value, key] ))
+let swapKeysAndValues = (object) => Object.fromEntries(Object.entries(object).map(([key, value]) => [value, key]))
 
-let sumKeysAndValues = (object) => {
-    return 'Write your method here';
-}
+let sumKeysAndValues = (object) => Object.entries(object).join(',').split(',').reduce(((acc, b) => Number(acc) + Number(b)))
 
-let removeCapitals = (string) => {
-    return 'Write your method here';
-}
+let removeCapitals = (string) => string.replace(/[A-Z]/g, '')
 
-let roundUp = (number) => {
-    return 'Write your method here';
-}
+let roundUp = (number) => Math.ceil(number)
 
-let formatDateNicely = (date) => {
-    return 'Write your method here';
-}
+let formatDateNicely = (date) => date.toLocaleDateString("en-GB")
 
-let getDomainName = (string) => {
-    return 'Write your method here';
-}
+let getDomainName = (string) => string
 
 let titleize = (string) => {
     return 'Write your method here';
