@@ -73,11 +73,9 @@ let roundUp = (number) => Math.ceil(number)
 
 let formatDateNicely = (date) => date.toLocaleDateString("en-GB")
 
-let getDomainName = (string) => string
+let getDomainName = (string) => string.match(/(?<=@)(.*)(?=\.)/)[0]
 
-let titleize = (string) => {
-    return 'Write your method here';
-}
+let titleize = (string) => string.replace(/tlw/g, '') // plus qu'à remplacer le text
 
 let checkForSpecialCharacters = (string) => {
     return 'Write your method here';
