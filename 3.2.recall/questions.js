@@ -84,27 +84,23 @@ const formatDateNicely = (date) => date.toLocaleDateString("en-GB")
 // }
 const getDomainName = (string) => string.slice(string.indexOf("@") + 1, string.lastIndexOf("."))
 
-// const titleize = (string) => string.replace(/tlw/g, '') // plus qu'à remplacer le text
+// cette regex ne fonctionne pas sous firefox car il y a un look around (?<= )
+const titleize = (string) => string.replace(/(^[^ ])|(?<= )([^ at])|(?<=\. )([^ ])/g, (elm) => elm.toUpperCase())
 
-const checkForSpecialCharacters = (string) => {
-    return 'Write your method here';
-}
+const checkForSpecialCharacters = (string) => /\W/g.test(string)
+// /[^A-Z0-9]/gi.test(string) fonctionne aussi
 
-const squareRoot = (number) => {
-    return 'Write your method here';
-}
 
-const factorial = (number) => {
-    return 'Write your method here';
-}
+const squareRoot = (number) => Math.sqrt(number)
+
+const factorial = (number) => number <= 1 ? 1 : (number * factorial(number-1))
+// const factorial = (number) => [...Array(number).map( (x,i) => i+1 )].reduce((a,b) => a * b) // 
 
 const findAnagrams = (string) => {
     return 'Write your method here';
 }
 
-const convertToCelsius = (number) => {
-    return 'Write your method here';
-}
+const convertToCelsius = (number) => Math.round(number * 5/9 - 32)
 
 const letterPosition = (array) => {
     return 'Write your method here';
