@@ -90,15 +90,12 @@ const titleize = (string) => string.replace(/(^[^ ])|(?<= )([^ at])|(?<=\. )([^ 
 const checkForSpecialCharacters = (string) => /\W/g.test(string)
 // /[^A-Z0-9]/gi.test(string) fonctionne aussi
 
-
 const squareRoot = (number) => Math.sqrt(number)
 
 const factorial = (number) => number <= 1 ? 1 : (number * factorial(number-1))
 // const factorial = (number) => [...Array(number).map( (x,i) => i+1 )].reduce((a,b) => a * b) // 
 
-const findAnagrams = (string) => {
-    return 'Write your method here';
-}
+const findAnagrams = (string) => string.split('').sort().map((elm, i, arr) => arr.filter(el => el !== elm)).reverse()
 
 const convertToCelsius = (number) => Math.round(number * 5/9 - 32)
 
