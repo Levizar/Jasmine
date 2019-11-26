@@ -95,21 +95,53 @@ const squareRoot = (number) => Math.sqrt(number)
 const factorial = (number) => number <= 1 ? 1 : (number * factorial(number - 1))
 // const factorial = (number) => [...Array(number).map( (x,i) => i+1 )].reduce((a,b) => a * b) // 
 
-// L'algorithme ne couvre pas toutes les solutions:
-// Seules les solutions à échanges par paires sont couvertes.
-// Le moment où chaque lettre se déplace n'est pas couvert.
+// // L'algorithme ne couvre pas toutes les solutions:
+// // Seules les solutions à échanges par paires sont couvertes.
+// // Le moment où chaque lettre se déplace n'est pas couvert.
+// const findAnagrams = (string) => {
+//     const word = string.split('').sort();
+//     console.log("word", word);
+//     let arrOfAnagram = [];
+//     // Couvre les permutations par paires => n'est pas fonctionnel
+//     // A re écrire de Zero.
+//     // Il ne devrait pas y avoir besoin de faire une boucle de plus
+//     for (let i = 0; i < word.length; i++) {
+//         for (let j = 0; j < word.length; j++) {
+//             // D'une manière ou d'une autre, la permutation modifie l'ordre de l'array Word
+//             // Il faut donc la redéfinir à chaque fois à travers une autre variable
+//             let currentWord = string.split('').sort();
+//             let permutation = currentWord[i];
+//             currentWord[i] = currentWord[j];
+//             currentWord[j] = permutation;
+//             currentWord = currentWord.join('');
+//             arrOfAnagram.push(currentWord);
+//         }
+//     }
+//     // Couvre les chaises musicales
+//     let currentWord = string.split('').sort();
+//     for (let i = 0; i < word.length; i++) {
+//         currentWord.push(currentWord[0]);
+//         currentWord.shift();
+//         let musicalChairSolution = currentWord.join('');
+//         arrOfAnagram.push(musicalChairSolution);
+//     }
+//     console.log(arrOfAnagram);
+//     arrOfAnagram = [...new Set(arrOfAnagram)]
+//     console.log(arrOfAnagram);
+//     return arrOfAnagram
+// }
+
 const findAnagrams = (string) => {
-    const word = string.split('').sort();
-    console.log("word", word);
+    
+    let word = string.split('').sort();
+    word = new Array(...word)
+    let compteur = 0
     let arrOfAnagram = [];
-    // Couvre les permutations par paires => n'est pas fonctionnel
-    // A re écrire de Zero.
-    // Il ne devrait pas y avoir besoin de faire une boucle de plus
     for (let i = 0; i < word.length; i++) {
         for (let j = 0; j < word.length; j++) {
-            // D'une manière ou d'une autre, la permutation modifie l'ordre de l'array Word
-            // Il faut donc la redéfinir à chaque fois à travers une autre variable
-            let currentWord = string.split('').sort();
+            let currentWord = new Array(...word);
+            console.log(currentWord);
+            console.log(compteur++);
             let permutation = currentWord[i];
             currentWord[i] = currentWord[j];
             currentWord[j] = permutation;
@@ -117,20 +149,11 @@ const findAnagrams = (string) => {
             arrOfAnagram.push(currentWord);
         }
     }
-    // Couvre les chaises musicales
-    let currentWord = string.split('').sort();
-    for (let i = 0; i < word.length; i++) {
-        currentWord.push(currentWord[0]);
-        currentWord.shift();
-        let musicalChairSolution = currentWord.join('');
-        arrOfAnagram.push(musicalChairSolution);
-    }
-    console.log(arrOfAnagram);
     arrOfAnagram = [...new Set(arrOfAnagram)]
-    console.log(arrOfAnagram);
     return arrOfAnagram
 }
 findAnagrams("ABC")
+
 
 const convertToCelsius = (number) => Math.round((number - 32) * 5 / 9)
 
