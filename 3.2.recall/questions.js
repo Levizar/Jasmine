@@ -131,29 +131,64 @@ const factorial = (number) => number <= 1 ? 1 : (number * factorial(number - 1))
 //     return arrOfAnagram
 // }
 
+
+// const findAnagrams = (string) => {
+
+//     let word = string.split('').sort();
+//     word = new Array(...word)
+//     let compteur = 0
+//     let arrOfAnagram = [];
+//     for (let i = 0; i < word.length; i++) {
+//         for (let j = 0; j < word.length; j++) {
+//             let currentWord = new Array(...word);
+//             console.log(currentWord);
+//             console.log(compteur++);
+//             let permutation = currentWord[i];
+//             currentWord[i] = currentWord[j];
+//             currentWord[j] = permutation;
+//             currentWord = currentWord.join('');
+//             arrOfAnagram.push(currentWord);
+//         }
+//     }
+//     arrOfAnagram = [...new Set(arrOfAnagram)]
+//     return arrOfAnagram
+// }
+
+
+// Fonction à débugger !
 const findAnagrams = (string) => {
-    
-    let word = string.split('').sort();
-    word = new Array(...word)
-    let compteur = 0
-    let arrOfAnagram = [];
-    for (let i = 0; i < word.length; i++) {
-        for (let j = 0; j < word.length; j++) {
-            let currentWord = new Array(...word);
-            console.log(currentWord);
-            console.log(compteur++);
-            let permutation = currentWord[i];
-            currentWord[i] = currentWord[j];
-            currentWord[j] = permutation;
-            currentWord = currentWord.join('');
-            arrOfAnagram.push(currentWord);
+    const getNextElements = (arrOfPossibility) => {
+        if (arrOfPossibility.length === 1) {
+            return arrOfPossibility
+        } else {
+            const arrNextPossAndCurrentSol = new Array(...arrOfPossibility.map((currentElm, _, arr) => {
+                const arrNextPossibilities = new Array(...arr)
+                const indexCurrentElm = arrNextPossibilities.indexOf(currentElm);
+                arrNextPossibilities.splice(indexCurrentElm, 1);
+                return [arrNextPossibilities, currentElm] // return from the callback map
+            }))
+            const answer = []
+            arrNextPossAndCurrentSol[0].forEach(arr => {
+                let arrAnswerReceived = getNextElements(arr);
+                arrAnswerReceived = new Array(...arrAnswerReceived)
+                arrAnswerReceived.forEach(solution => {
+                    console.log(solution);
+                    // let currentAnswer = solution.unshift(arrNextPossAndCurrentSol[1]); // si array, sinon concat
+                    // console.log(currentAnswer);
+                    // currentAnswer = currentAnswer.join('').split('');
+                    // answer.push(currentAnswer);
+                })
+            })
+            return answer;
         }
     }
-    arrOfAnagram = [...new Set(arrOfAnagram)]
-    return arrOfAnagram
-}
-findAnagrams("ABC")
 
+    let word = string.split('').sort();
+    const answer = getNextElements(word)
+    return answer
+}
+
+findAnagrams("ABC")
 
 const convertToCelsius = (number) => Math.round((number - 32) * 5 / 9)
 
